@@ -1,5 +1,7 @@
 from ast import While
+from operator import ne
 import random
+from secrets import choice
 from turtle import done
 
 txt = "Respuesta: "
@@ -133,9 +135,9 @@ while num < num2:
             primo = False
     if primo:
         print(num, ' siempre primo')
-            
+
     else:
-     primo = True       
+        primo = True
     num += 1
 print(line)
 # ---------------------
@@ -154,11 +156,127 @@ while num < num2:
             break
     if primo:
         print(num, ' siempre primo')
-            
+
     else:
-     primo = True       
+        primo = True
     num += 1
 print(line)
 # ---------------------
 
 qstn = '11) En los puntos 9 y 10, se diseño un código que encuentra números primos y además se lo optimizó. ¿Es posible saber en qué medida se optimizó?'
+print(qstn)
+# codigo sin break
+ciclos_sin_break = 0
+num = 0
+num2 = 30
+primo = True
+while num < num2:
+    for i in range(2, num):
+        ciclos_sin_break += 1
+        if num % i == 0:
+            # print(num, ' nunca primo')
+            primo = False
+    if primo:
+        print(num, ' siempre primo')
+
+    else:
+        primo = True
+    num += 1
+
+
+# ciclo con break
+ciclos_con_break = 0
+num = 0
+num2 = 30
+primo = True
+while num < num2:
+    for i in range(2, num):
+        ciclos_con_break += 1
+        if num % i == 0:
+            # print(num, ' nunca primo')
+            primo = False
+            break
+    if primo:
+        print(num, ' siempre primo')
+
+    else:
+        primo = True
+    num += 1
+
+print('Cantidad de ciclos: ', ciclos_sin_break,
+      '\n', 'Ciclos con break: ', ciclos_con_break)
+print(line)
+
+# ---------------------
+
+qstn = '12) Si la cantidad de números que se evalúa es mayor a treinta, esa optimización crece?'
+print(qstn)
+
+print('si')
+print(line)
+# ---------------------
+
+qstn = '13) Aplicando continue, armar un ciclo while que solo imprima los valores divisibles por 12, dentro del rango de números de 100 a 300'
+print(qstn)
+# un numero es divisible entre 12 si es divisible entre 3 y 4.
+# un numero es divisible entre 3 si es divisible entre si la suma de sus digito es multiplo de 3.
+# un numero es divisible entre 4.
+init = 100
+end = 300
+
+while init <= end:
+    if init % 12 != 0:
+        init += 1
+        continue
+    print(init)
+    init += 1
+
+print(line)
+# ---------------------
+
+qstn = '14) Utilizar la función **input()** que permite hacer ingresos por teclado, para encontrar números primos y dar la opción al usario de buscar el siguiente'
+print(qstn)
+
+#next = True
+primo = False
+
+while next:
+
+    optn = input('Ingrese un número para averiguar si este es primo suyo: \n')
+
+    for num in range(2, 10):
+        if int(optn) % num == 0:
+            if int(optn) == num:
+                continue
+            else:
+                primo = False
+
+                break
+        else:
+            primo = True
+
+    if primo:
+        print('!Saluda al primo¡ :D \n', optn)
+    else:
+        print('No es primo >:v')
+
+    x = input('Desea hallar a otro primo 🌝? (S/N): ')
+
+    if x.upper() == 'N':
+        print('Adios')
+        next = False
+print(line)
+# ---------------------
+
+qstn = '15) Crear un ciclo while que encuentre dentro del rango de 100 a 300 el primer número divisible por 3 y además múltiplo de 6'
+print(qstn)
+
+low = 100
+up = 301
+
+while low != up:
+    if low % 3 == 0 and low % 6 == 0:
+        print(low)
+        break
+    else: 
+        low += 1
